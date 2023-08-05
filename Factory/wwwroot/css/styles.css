@@ -1,4 +1,33 @@
 body {
     background-color: rgb(50, 50, 50);
     color: white;
+    text-align: center;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    width: 100%;
+    text-align: center;
+    background-color: black;
+    padding: 10px;
+    height: 100px;
+}
+
+span {
+    background-color: white;
+    padding: 1em;
+    margin: 0px 10px;
+    display: inline-flex;
+    border-radius: 10px;
+    border: 3px solid gray;
+    vertical-align: middle;
+    position: relative;
+    bottom: 0;
+}
+
+span:hover {
+    transition-duration: .2s;
+    font-size: 1.2em;
 }
