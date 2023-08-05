@@ -9,5 +9,5 @@
 <h3>Engineers On Staff</h3>
 @foreach (Engineer engineer in @Model)
 {
-    <p>@Html.ActionLink(engineer.Name, "Show", "Engineers")</p>
+    <p>@Html.ActionLink(engineer.Name, "Show", "Engineers", new {id = engineer.EngineerId})</p>
 }
