@@ -1,0 +1,12 @@
+@{
+    Layout = "_Layout";
+}
+
+<h2>Engineers</h2>
+<p>@Html.ActionLink("New Engineer", "New", "Engineers")</p>
+
+<h3>Engineers On Staff</h3>
+@foreach (Engineer engineer in @Model)
+{
+    <p>@Html.ActionLink(engineer.Name, "Show", "Engineers"))</p>
+}
