@@ -1,0 +1,13 @@
+@{
+    Layout = "_Layout";
+}
+@model Factory.Models.Machine
+
+<h2>Delete Machine</h2>
+
+@Html.DisplayNameFor(model => model.Name) @Html.DisplayFor(model => model.Name)
+<br>
+@using (Html.BeginForm("Destroy", "Machines", new { id = Model.MachineId }))
+{
+    <input type="submit" value="Delete" />
+}
