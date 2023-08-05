@@ -5,3 +5,5 @@
 @model Factory.Models.Engineer
 <h2>Engineer Details</h2>
 <p>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</p>
+<br>
+<p>@Html.ActionLink("Edit Engineer", "Edit", "Engineers", new { id = Model.EngineerId })</p>
