@@ -1,4 +1,4 @@
-# _Hair Salon_
+# _Factory_
 
 #### By _**Thomas Bakken**_
 
