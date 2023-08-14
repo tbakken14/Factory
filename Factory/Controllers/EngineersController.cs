@@ -76,7 +76,7 @@ namespace Factory.Controllers
         {
             Engineer engineer = _db.Engineers
                 .FirstOrDefault(model => model.EngineerId == id);
-            ViewBag.IngredientId = new SelectList(_db.Machines, "MachineId", "Name");
+            ViewBag.Machines = new SelectList(_db.Machines, "MachineId", "Name");
             return View(engineer);
         }
 

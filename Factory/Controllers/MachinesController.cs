@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
 using System.Collections.Generic;
 using Factory.Models;
@@ -69,6 +70,29 @@ namespace Factory.Controllers
             _db.Machines.Remove(machine);
             _db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult AddEngineer(int id)
+        {
+            Machine machine = _db.Machines
+                .FirstOrDefault(model => model.MachineId == id);
+            ViewBag.Engineers = new SelectList(_db.Engineers, "EngineerId", "Name");
+            return View(machine);
+        }
+
+        [HttpPost]
+        public ActionResult AddEngineer(Machine machine, int engineerId)
+        {
+#nullable enable
+            EngineerMachine? engineerMachine = _db.EngineerMachines
+                .FirstOrDefault(model => (model.EngineerId == engineerId && model.MachineId == machine.MachineId));
+#nullable disable
+            if (engineerMachine == null && engineerId != 0)
+            {
+                _db.EngineerMachines.Add(new EngineerMachine() { EngineerId = engineerId, MachineId = machine.MachineId });
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Details", new { id = machine.MachineId });
         }
     }
 }
