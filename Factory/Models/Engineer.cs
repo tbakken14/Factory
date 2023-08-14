@@ -9,6 +9,6 @@ namespace Factory.Models
 
         [Column(TypeName = "varchar(255)")]
         public string Name { get; set; }
-        public List<EngineerMachines> JoinEntities { get; set; }
+        public List<EngineerMachine> EngineerMachines { get; set; }
     }
 }
