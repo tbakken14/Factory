@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Collections.Generic;
 using Factory.Models;
@@ -36,6 +37,8 @@ namespace Factory.Controllers
         public ActionResult Show(int id)
         {
             Machine machine = _db.Machines
+                .Include(model => model.EngineerMachines)
+                .ThenInclude(model => model.Engineer)
                 .FirstOrDefault(machine => machine.MachineId == id);
             return View(machine);
         }
@@ -76,7 +79,7 @@ namespace Factory.Controllers
         {
             Machine machine = _db.Machines
                 .FirstOrDefault(model => model.MachineId == id);
-            ViewBag.Engineers = new SelectList(_db.Engineers, "EngineerId", "Name");
+            ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
             return View(machine);
         }
 
@@ -92,7 +95,7 @@ namespace Factory.Controllers
                 _db.EngineerMachines.Add(new EngineerMachine() { EngineerId = engineerId, MachineId = machine.MachineId });
                 _db.SaveChanges();
             }
-            return RedirectToAction("Details", new { id = machine.MachineId });
+            return RedirectToAction("Show", new { id = machine.MachineId });
         }
     }
 }
