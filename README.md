@@ -35,7 +35,8 @@ _A website for a factory to manage engineers and machines. The user can view and
 
 ## Known Bugs
 
-* _Submitting an empty name results in error_
+* _Submitting an empty name results in error._
+* _With many engineers or machines, the list is hidden by the nav bar._
 
 ## License
 
